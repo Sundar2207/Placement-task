@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1  # Adjust as needed
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: nginx:v2
+          resources:
+            limits:
+              cpu: "200m"  # Adjust CPU limit as needed
+              memory: "100Mi"  # Adjust memory limit as needed
+          ports:
+            - containerPort: 80
